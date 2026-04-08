@@ -71,5 +71,3 @@ npm run dev
 cd frontend
 npm install
 npm run dev
----
-Thank you Kalpathon team! 🚀
