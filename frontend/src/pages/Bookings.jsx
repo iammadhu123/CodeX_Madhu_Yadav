@@ -23,14 +23,29 @@ const Bookings = () => {
     setLoading(true);
     try {
       const endpoint = user?.role === 'provider' ? '/bookings/my-jobs' : '/bookings/my-bookings';
-      const res = await axios.get(endpoint);
-      setBookings(res.data.data || []);
+      let apiBookings = [];
+      try {
+        const res = await axios.get(endpoint);
+        apiBookings = res.data.data || [];
+      } catch (apiErr) {
+        console.log('API bookings not available:', apiErr);
+      }
+
+      // Add demo bookings from localStorage
+      const demoBookingsRaw = localStorage.getItem('demoBookings');
+      let demoBookings = [];
+      if (demoBookingsRaw) {
+        demoBookings = JSON.parse(demoBookingsRaw);
+      }
+
+      setBookings([...demoBookings, ...apiBookings]);
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to load bookings');
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="py-12">
@@ -65,16 +80,19 @@ const Bookings = () => {
                 <div className="flex flex-wrap justify-between gap-4 mb-4">
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">{booking.service?.title || 'Service'}</h3>
-                    <p className="text-gray-600">{booking.service?.price ? `$${booking.service.price}` : ''}</p>
+<p className="text-gray-600">₹{booking.service?.price || 0}</p>
+
                   </div>
                   <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                    booking.status === 'demo-pending' ? 'bg-orange-100 text-orange-800' :
                     booking.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                     booking.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
                     booking.status === 'completed' ? 'bg-green-100 text-green-800' :
                     'bg-gray-100 text-gray-800'
                   }`}>
-                    {booking.status}
+                    {booking.status === 'demo-pending' ? 'Demo Pending' : booking.status}
                   </span>
+
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-600">
