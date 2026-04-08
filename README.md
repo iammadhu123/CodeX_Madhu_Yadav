@@ -6,9 +6,6 @@
 ## Project Name
 **ServiceSphere**
 
-## Selected Track
-**Sustainability** (Local neighborhood services reduce travel emissions)
-
 ## Selected Problem Statement (PS)
 **Neighbourhood Service Marketplace** – Connecting local providers and customers efficiently.
 
@@ -19,7 +16,7 @@
 ## Team Members & Roles
 | Name | Role |
 |------|------|
-| Madhu Yadav | Team Leader & Full Stack Developer |
+| Madhu Yadav | Full Stack Developer |
 | Kriya Yadav | Frontend Developer |
 | Manjari Awasthi | Backend Developer |
 
@@ -57,7 +54,7 @@ ServiceSphere is a full-stack marketplace that connects customers with verified 
 
 ## 🔗 Additional Links (Optional)
 
-**Presentation:** [e]  
+**Presentation:** []  
 **Live Demo:** []
 
 ---
@@ -74,4 +71,5 @@ npm run dev
 cd frontend
 npm install
 npm run dev
+---
 Thank you Kalpathon team! 🚀
