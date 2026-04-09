@@ -55,7 +55,7 @@ ServiceSphere is a full-stack marketplace that connects customers with verified 
 ## 🔗 Additional Links (Optional)
 
 **Presentation:** []  
-**Live Demo:** []
+**Live Demo:** [code-x-madhu.vercel.app]
 
 ---
 
